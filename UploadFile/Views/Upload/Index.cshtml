@@ -1,0 +1,45 @@
+﻿@model UploadFile.Models.SingleFileModel
+
+@{
+    ViewData["Title"] = "GetNetworking - Upload Único";
+
+}
+<form asp-action="Upload" asp-controller="Upload" method="post" enctype="multipart/form-data">
+    @if (Model.IsResponse)
+    {
+        if (Model.IsSuccess)
+        {
+            <div class="alert alert-success">
+                @Model.Message
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+                @Model.Message
+            </div>
+        }
+    }
+    <div class="row mt-2">
+        <div class="col-12">
+            <label class="col-form-label">Insira nome do arquivo: </label>
+            <input asp-for="FileName" class="form-control" />
+            <span asp-validation-for="FileName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-12">
+            <label class="col-form-label">Selecione o arquivo: </label>
+            <input asp-for="File" class="form-control" />
+            <span asp-validation-for="File" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="row mt-2">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Subir Arquivo</button>
+        </div>
+    </div>
+</form>
